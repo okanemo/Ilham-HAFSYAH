@@ -3,10 +3,10 @@ require('dotenv').config()
 const morgan = require('morgan')
 const cors = require('cors')
 const routesNavigation = require('./src/routesNavigation')
-// const bodyParser = require('body-parser')
 
 const app = express()
 app.use(morgan('dev'))
+app.use(express.static('profilepicture'))
 app.use(cors())
 app.use((request, response, next) => {
   response.header('Access-Control-Allow-Origin', '*')
@@ -16,8 +16,7 @@ app.use((request, response, next) => {
   )
   next()
 })
-// app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use('/', routesNavigation)

@@ -15,7 +15,8 @@ module.exports = {
       const { name, username } = req.body
       const setData = {
         name,
-        username
+        username,
+        profilePicture: req.file === undefined ? '' : req.file.filename
       }
       const checkingUsername = await checkingExistUsernameModel(username)
       if (checkingUsername.length > 0) {
