@@ -35,7 +35,7 @@ module.exports = {
   getListNabModel: () => {
     return new Promise((resolve, reject) => {
       connection.query(
-        'SELECT nab, updatedAt AS date FROM nab',
+        'SELECT nab, updatedAt AS date FROM nab ORDER BY updatedAt DESC',
         (error, result) => {
           const newResult = []
           let obj = ''
