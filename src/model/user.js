@@ -41,7 +41,6 @@ module.exports = {
       connection.query(
         `SELECT user.userId, SUM(unit) AS totalUnit FROM user JOIN unit ON user.userId = unit.userId ${user_id} ORDER BY userId ASC LIMIT ${limit} OFFSET ${offset}`,
         (error, result) => {
-          console.log(result)
           const newResult = []
           let obj = ''
           for (let i = 0; i <= result.length - 1; i++) {

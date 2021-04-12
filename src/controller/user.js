@@ -4,6 +4,7 @@ const {
   getTotalMemberModel,
   getMemberModel
 } = require('../model/user')
+const { checkingUserIdModel } = require('../model/transaction')
 const { getNabModel } = require('../model/transaction')
 const helper = require('../helper/response')
 const qs = require('querystring')
@@ -67,8 +68,17 @@ module.exports = {
         prevLink:
           prevLink && `http://localhost:3000/api/v1/ib/member?${prevLink}`
       }
-      const result = await getMemberModel(user_id, limit, offset, nab)
-      return helper.response(res, 200, 'Success get member', result, pageInfo)
+      const checkingUserId = await checkingUserIdModel(req.query.user_id)
+      if (checkingUserId.length > 0 || req.query.user_id === '') {
+        const result = await getMemberModel(user_id, limit, offset, nab)
+        return helper.response(res, 200, 'Success get member', result, pageInfo)
+      } else {
+        return helper.response(
+          res,
+          400,
+          `User with id ${req.query.user_id} is not valid!`
+        )
+      }
     } catch (error) {
       console.log(error)
       return helper.response(res, 400, 'Bad Request', error)
