@@ -1,6 +1,7 @@
 const router = require('express').Router()
-const { updateTotalBalance } = require('../controller/nab')
+const { updateTotalBalance, listNab } = require('../controller/nab')
 
 router.post('/updateTotalBalance', updateTotalBalance)
+router.get('/listNAB', listNab)
 
 module.exports = router

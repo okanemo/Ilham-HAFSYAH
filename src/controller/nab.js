@@ -1,7 +1,8 @@
 const {
   checkingUnitModel,
   countingUnitModel,
-  updateTotalBalanceModel
+  updateTotalBalanceModel,
+  getListNabModel
 } = require('../model/nab')
 const helper = require('../helper/response')
 
@@ -21,6 +22,22 @@ module.exports = {
         }
         const result = await updateTotalBalanceModel(setNab)
         return helper.response(res, 200, 'Success update total balance', result)
+      }
+    } catch (error) {
+      return helper.response(res, 400, 'Bad Request', error)
+    }
+  },
+  listNab: async (req, res) => {
+    try {
+      const result = await getListNabModel()
+      if (result.length > 0) {
+        return helper.response(res, 200, 'Success get NAB list', result)
+      } else {
+        return helper.response(
+          res,
+          200,
+          'there has been no update in the NAB list'
+        )
       }
     } catch (error) {
       return helper.response(res, 400, 'Bad Request', error)

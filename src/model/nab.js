@@ -31,5 +31,12 @@ module.exports = {
         }
       })
     })
+  },
+  getListNabModel: () => {
+    return new Promise((resolve, reject) => {
+      connection.query('SELECT nab, updatedAt FROM nab', (error, result) => {
+        !error ? resolve(result) : reject(new Error(error))
+      })
+    })
   }
 }
