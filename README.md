@@ -22,7 +22,7 @@
 6. Create a database with the name #database_name, and Import file sql to **phpmyadmin**
 7. Open Postman desktop application or Chrome web app extension that has installed before
 8. Choose HTTP Method and enter request url.(ex. localhost:3000/)
-9. You can see all the end point [here](https://documenter.getpostman.com/view/13449265/TzJoDLDo)
+9. You can see all the END POINT [here](https://documenter.getpostman.com/view/13449265/TzJoDLDo) (POSTMAN DOCUMENTATION)
 
 ## Set up .env file
 
