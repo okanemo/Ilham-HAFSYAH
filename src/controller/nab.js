@@ -17,8 +17,8 @@ module.exports = {
       } else {
         const countingUnit = await countingUnitModel()
         const setNab = {
-          nab: current_balance / countingUnit[0].totalUnit,
-          updatedAt: new Date().toLocaleString('nl-NL')
+          nab: (current_balance / countingUnit[0].totalUnit).toFixed(5),
+          updatedAt: new Date()
         }
         const result = await updateTotalBalanceModel(setNab)
         return helper.response(res, 200, 'Success update total balance', result)

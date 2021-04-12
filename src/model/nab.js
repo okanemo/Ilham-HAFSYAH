@@ -23,7 +23,7 @@ module.exports = {
       connection.query('INSERT INTO nab SET ?', setNab, (error, result) => {
         if (!error) {
           const newResult = {
-            nab_amount: setNab.nab.toFixed(5)
+            nab_amount: setNab.nab.toFixed(4)
           }
           resolve(newResult)
         } else {
@@ -40,7 +40,7 @@ module.exports = {
           const newResult = []
           let obj = ''
           for (let i = 0; i <= result.length - 1; i++) {
-            const nab = result[i].nab
+            const nab = result[i].nab.toFixed(4)
             const date = result[i].date.toLocaleString('es-CL')
             obj = { nab, date }
             newResult.push(obj)
