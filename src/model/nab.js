@@ -34,9 +34,20 @@ module.exports = {
   },
   getListNabModel: () => {
     return new Promise((resolve, reject) => {
-      connection.query('SELECT nab, updatedAt FROM nab', (error, result) => {
-        !error ? resolve(result) : reject(new Error(error))
-      })
+      connection.query(
+        'SELECT nab, updatedAt AS date FROM nab',
+        (error, result) => {
+          const newResult = []
+          let obj = ''
+          for (let i = 0; i <= result.length - 1; i++) {
+            const nab = result[i].nab
+            const date = result[i].date.toLocaleString('es-CL')
+            obj = { nab, date }
+            newResult.push(obj)
+          }
+          !error ? resolve(newResult) : reject(new Error(error))
+        }
+      )
     })
   }
 }
