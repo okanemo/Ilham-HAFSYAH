@@ -6,7 +6,13 @@ module.exports = {
       connection.query(
         'SELECT nab FROM nab ORDER BY updatedAt DESC LIMIT 1',
         (error, result) => {
-          !error ? resolve(result[0].nab) : reject(new Error(error))
+          let newResult = ''
+          if (result.length < 0) {
+            newResult = result[0].nab
+          } else {
+            newResult = 1
+          }
+          !error ? resolve(newResult) : reject(new Error(error))
         }
       )
     })

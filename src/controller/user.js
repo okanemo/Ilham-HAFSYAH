@@ -72,7 +72,21 @@ module.exports = {
       const checkingUserId = await checkingUserIdModel(req.query.user_id)
       if (checkingUserId.length > 0 || req.query.user_id === '') {
         const result = await getMemberModel(user_id, limit, offset, nab)
-        return helper.response(res, 200, 'Success get member', result, pageInfo)
+        if (result.length > 0) {
+          return helper.response(
+            res,
+            200,
+            'Success get member',
+            result,
+            pageInfo
+          )
+        } else {
+          return helper.response(
+            res,
+            400,
+            'No user has yet become a NOZOMU investment member!'
+          )
+        }
       } else {
         return helper.response(
           res,
@@ -81,7 +95,6 @@ module.exports = {
         )
       }
     } catch (error) {
-      console.log(error)
       return helper.response(res, 400, 'Bad Request', error)
     }
   }

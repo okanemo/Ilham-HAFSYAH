@@ -29,9 +29,9 @@ module.exports = {
   getTotalMemberModel: () => {
     return new Promise((resolve, reject) => {
       connection.query(
-        'SELECT COUNT(*) AS total FROM user',
+        'SELECT userId FROM unit GROUP BY userId',
         (error, result) => {
-          !error ? resolve(result[0].total) : reject(new Error(error))
+          !error ? resolve(result[0].userId) : reject(new Error(error))
         }
       )
     })
@@ -43,9 +43,13 @@ module.exports = {
         (error, result) => {
           const newResult = []
           let obj = ''
+          let total_unit_per_id = 0
           for (let i = 0; i <= result.length - 1; i++) {
             const user_id = result[i].userId
-            const total_unit_per_id = result[i].totalUnit.toFixed(4)
+            total_unit_per_id =
+              result[i].totalUnit === null
+                ? total_unit_per_id.toFixed(4)
+                : result[i].totalUnit.toFixed(4)
             const total_amount_rupiah_per_id = (
               result[i].totalUnit * nab
             ).toFixed(2)

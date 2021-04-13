@@ -17,7 +17,9 @@ module.exports = {
       } else {
         const countingUnit = await countingUnitModel()
         const setNab = {
-          nab: (current_balance / countingUnit[0].totalUnit).toFixed(5),
+          nab: parseFloat(
+            (current_balance / countingUnit[0].totalUnit).toFixed(5)
+          ),
           updatedAt: new Date()
         }
         const result = await updateTotalBalanceModel(setNab)
