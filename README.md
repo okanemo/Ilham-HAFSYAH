@@ -1,4 +1,4 @@
-<h1 align="center">OKANEMO TEST</h1>
+<h1 align="center">OKANEMO-NOZOMU Investment RESTful API</h1>
 
 ## Built With
 
@@ -29,12 +29,18 @@
 Open .env file on your favorite code editor, and copy paste this code below :
 
 ```
-PORT=3000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=''
-DB_NAME=okanemo
+PORT = 3000
+DB_HOST = localhost
+DB_USER = root
+DB_PASSWORD = ''
+DB_NAME = okanemo
 ```
+
+## EXTRA
+1. Multer middleware for user profile picture
+2. dotenv
+3. Implementing pagination for get member feature
+
 
 ## License
 
