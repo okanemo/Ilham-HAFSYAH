@@ -20,9 +20,20 @@
 4. Make new file a called **.env**, set up first [here](#set-up-env-file)
 5. Turn on Web Server and MySQL can using Third-party tool like xampp, etc.
 6. Create a database with the name #database_name, and Import file sql to **phpmyadmin**
-7. Open Postman desktop application or Chrome web app extension that has installed before
-8. Choose HTTP Method and enter request url.(ex. localhost:3000/)
-9. You can see all the END POINT [here](https://documenter.getpostman.com/view/13449265/TzJoDLDo) (POSTMAN DOCUMENTATION)
+7. Type `nodemon app.js` on terminal to running the project
+8. Open Postman desktop application or Chrome web app extension that has installed before
+9. Choose HTTP Method and enter request url.(ex. localhost:3000/)
+10. You can see all the END POINT [here](https://documenter.getpostman.com/view/13449265/TzJoDLDo) (POSTMAN DOCUMENTATION)
+
+*to ignore camelcase problem, replace rules in node_modules/standard/eslintrc.json with:
+```
+{
+  "extends": ["standard", "standard-jsx"],
+  "rules": {
+    "camelcase": 0
+}
+}
+```
 
 ## Set up .env file
 
@@ -30,10 +41,10 @@ Open .env file on your favorite code editor, and copy paste this code below :
 
 ```
 PORT = 3000
-DB_HOST = localhost
-DB_USER = root
-DB_PASSWORD = ''
-DB_NAME = okanemo
+HOST = localhost
+USER = root
+PASSWORD = ''
+DATABASE = okanemo
 ```
 
 ## EXTRA
