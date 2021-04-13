@@ -25,7 +25,7 @@
 9. Choose HTTP Method and enter request url.(ex. localhost:3000/)
 10. You can see all the END POINT [here](https://documenter.getpostman.com/view/13449265/TzJoDLDo) (POSTMAN DOCUMENTATION)
 
-*to ignore camelcase problem, replace rules in node_modules/standard/eslintrc.json with:
+*to ignore camelcase warning, replace rules in node_modules/standard/eslintrc.json with:
 ```
 {
   "extends": ["standard", "standard-jsx"],
