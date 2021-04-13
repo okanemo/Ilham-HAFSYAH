@@ -7,7 +7,7 @@ module.exports = {
         'SELECT nab FROM nab ORDER BY updatedAt DESC LIMIT 1',
         (error, result) => {
           let newResult = ''
-          if (result.length < 0) {
+          if (result.length > 0) {
             newResult = result[0].nab
           } else {
             newResult = 1

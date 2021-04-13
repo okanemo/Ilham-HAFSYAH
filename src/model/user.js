@@ -31,7 +31,7 @@ module.exports = {
       connection.query(
         'SELECT userId FROM unit GROUP BY userId',
         (error, result) => {
-          !error ? resolve(result[0].userId) : reject(new Error(error))
+          !error ? resolve(result.length) : reject(new Error(error))
         }
       )
     })
